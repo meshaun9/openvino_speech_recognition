@@ -6,7 +6,7 @@ This project is a speech recognization demo that uses OpenVINO for inference, de
 * [Intel(R) Distribution of OpenVINO(TM) Toolkit](https://software.intel.com/en-us/openvino-toolkit)
 * [Install mraa](https://github.com/intel-iot-devkit/mraa)
 * Install TensorFlow 1.5 
-** later versions of Tensorflow require AVX instruction set
+  * later versions of Tensorflow require AVX instruction set
 
 ### Hardware 
 * [Up-board](https://up-board.org/)
