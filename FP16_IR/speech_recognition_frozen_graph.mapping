@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<mapping>
+	<map>
+		<framework name="Reshape_1" out_port_id="0"/>
+		<IR id="0" name="Reshape_1/placeholder_port_0" out_port_id="0"/>
+	</map>
+	<map>
+		<framework name="Reshape_1" out_port_id="0"/>
+		<IR id="1" name="Reshape_1" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="add" out_port_id="0"/>
+		<IR id="2" name="Conv2D" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="Relu" out_port_id="0"/>
+		<IR id="3" name="Relu" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="MaxPool" out_port_id="0"/>
+		<IR id="4" name="MaxPool" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="add_1" out_port_id="0"/>
+		<IR id="5" name="Conv2D_1" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="Relu_1" out_port_id="0"/>
+		<IR id="6" name="Relu_1" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="Reshape_2" out_port_id="0"/>
+		<IR id="7" name="Reshape_2" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="add_2" out_port_id="0"/>
+		<IR id="8" name="MatMul" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="labels_softmax" out_port_id="0"/>
+		<IR id="9" name="labels_softmax" out_port_id="1"/>
+	</map>
+</mapping>
