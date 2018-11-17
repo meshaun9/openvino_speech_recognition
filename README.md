@@ -1,5 +1,7 @@
-# openvino_speech_recognition
-This project is a speech recognization demo that uses OpenVINO for inference, deploys TensorFlow Speech Recognition model, and can be  on Intel's CPU, GPU, and NCS2. 
+# OpenVINO Speech Recognition Demo for NIPS 2018
+
+This is a speech recognization demo that uses OpenVINO for inference, uses [TensorFlow Speech Recognition model](http://www.isca-speech.org/archive/interspeech_2015/papers/i15_1478.pdf), and can be deployed on Intel's CPU, GPU, and NCS2. 
+
 ## System Configuration
 
 ### Software
