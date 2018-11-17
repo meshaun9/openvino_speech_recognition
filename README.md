@@ -9,7 +9,7 @@ This is a speech recognization demo that uses OpenVINO for inference, uses [Tens
 * [Install mraa](https://github.com/intel-iot-devkit/mraa)
 * Install TensorFlow 1.5 
 
-Note: later versions of Tensorflow require AVX instruction set which isn't supported by the Up-board.
+Note: Later versions of Tensorflow require AVX instruction set which isn't supported by the Up-board.
 
 ### Hardware 
 * [Up-board](https://up-board.org/)
