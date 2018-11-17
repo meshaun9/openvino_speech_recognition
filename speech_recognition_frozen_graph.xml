@@ -1,0 +1,196 @@
+<?xml version="1.0" ?>
+<net batch="1" name="speech_recognition_frozen_graph" version="2">
+	<layers>
+		<layer id="0" name="Reshape_1/placeholder_port_0" precision="FP32" type="Input">
+			<output>
+				<port id="0">
+					<dim>1</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="1" name="Reshape_1" precision="FP32" type="Reshape">
+			<data axis="0" dim="1,1,98,40" num_axes="-1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="2" name="Conv2D" precision="FP32" type="Convolution">
+			<data auto_pad="same_upper" dilation-x="1" dilation-y="1" group="1" kernel-x="8" kernel-y="20" output="64" pad-b="10" pad-r="4" pad-x="3" pad-y="9" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="0" size="40960"/>
+				<biases offset="40960" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="3" name="Relu" precision="FP32" type="ReLU">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="4" name="MaxPool" precision="FP32" type="Pooling">
+			<data auto_pad="same_upper" exclude-pad="true" kernel-x="2" kernel-y="2" pad-b="0" pad-r="0" pad-x="0" pad-y="0" pool-method="max" rounding-type="floor" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>98</dim>
+					<dim>40</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>49</dim>
+					<dim>20</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="5" name="Conv2D_1" precision="FP32" type="Convolution">
+			<data auto_pad="same_upper" dilation-x="1" dilation-y="1" group="1" kernel-x="4" kernel-y="10" output="64" pad-b="5" pad-r="2" pad-x="1" pad-y="4" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>49</dim>
+					<dim>20</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>49</dim>
+					<dim>20</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="41216" size="655360"/>
+				<biases offset="696576" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="6" name="Relu_1" precision="FP32" type="ReLU">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>49</dim>
+					<dim>20</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>49</dim>
+					<dim>20</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="7" name="Reshape_2" precision="FP32" type="Reshape">
+			<data axis="0" dim="1,62720" num_axes="-1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>49</dim>
+					<dim>20</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>62720</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="8" name="MatMul" precision="FP32" type="FullyConnected">
+			<data out-size="12"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>62720</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>12</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="696832" size="3010560"/>
+				<biases offset="3707392" size="48"/>
+			</blobs>
+		</layer>
+		<layer id="9" name="labels_softmax" precision="FP32" type="SoftMax">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>12</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>12</dim>
+				</port>
+			</output>
+		</layer>
+	</layers>
+	<edges>
+		<edge from-layer="0" from-port="0" to-layer="1" to-port="0"/>
+		<edge from-layer="1" from-port="1" to-layer="2" to-port="0"/>
+		<edge from-layer="2" from-port="3" to-layer="3" to-port="0"/>
+		<edge from-layer="3" from-port="1" to-layer="4" to-port="0"/>
+		<edge from-layer="4" from-port="1" to-layer="5" to-port="0"/>
+		<edge from-layer="5" from-port="3" to-layer="6" to-port="0"/>
+		<edge from-layer="6" from-port="1" to-layer="7" to-port="0"/>
+		<edge from-layer="7" from-port="1" to-layer="8" to-port="0"/>
+		<edge from-layer="8" from-port="3" to-layer="9" to-port="0"/>
+	</edges>
+</net>
