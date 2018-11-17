@@ -1,6 +1,6 @@
 # OpenVINO Speech Recognition Demo for NIPS 2018
 
-This is a speech recognization demo that uses OpenVINO for inference, uses [TensorFlow Speech Recognition model](http://www.isca-speech.org/archive/interspeech_2015/papers/i15_1478.pdf), and can be deployed on Intel's CPU, GPU, and NCS2. 
+This is a speech recognization demo that uses OpenVINO for inference, uses [TensorFlow Speech Recognition model](http://www.isca-speech.org/archive/interspeech_2015/papers/i15_1478.pdf), and can be deployed on Intel's CPU, GPU, and NCS2. Based on the inference results the robotic arm will attempt sign language and hand gestures.
 
 ## System Configuration
 
